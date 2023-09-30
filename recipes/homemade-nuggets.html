@@ -4,6 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homemade Nuggets</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            transition: background-color 0.5s ease;
+        }
+
+        h1 {
+            color: #e74c3c;
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: #3498db;
+            margin-top: 30px;
+        }
+
+        h3 {
+            color: #2ecc71;
+            margin: 20px 0 10px;
+        }
+
+        strong {
+            color: #e67e22;
+        }
+
+        ul, ol {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        img {
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        p {
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3498db;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: #fff;
+            border-radius: 5px;
+            margin-top: 30px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            background-color: #c0392b;
+        }
+
+        body.dark {
+            background-color: #1e272e;
+            color: #ecf0f1;
+        }
+    </style>
 </head>
 
 
@@ -51,5 +122,19 @@
     <p>Bake nuggets in the preheated oven until browned and chicken is cooked through, about 20 minutes.</p>
 
     <a href="../index.html">Go Back</a>
+
+    <script>
+        document.addEventListener("scroll", function() {
+            const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            const darkModeIntensity = Math.min(scrollPercentage, 100);
+            document.body.style.backgroundColor = `hsl(210, 15%, ${80 - darkModeIntensity * 0.6}%)`;
+
+            // Adjust text color dynamically
+            const textColor = darkModeIntensity > 50 ? "#ecf0f1" : "#333";
+            document.body.style.color = textColor;
+
+            document.body.classList.toggle("dark", darkModeIntensity > 50);
+        });
+    </script>
 </body>
 </html>

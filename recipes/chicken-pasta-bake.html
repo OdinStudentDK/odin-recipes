@@ -132,14 +132,26 @@
         document.addEventListener("scroll", function() {
             const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
             const darkModeIntensity = Math.min(scrollPercentage, 100);
-            document.body.style.backgroundColor = `hsl(210, 15%, ${80 - darkModeIntensity * 0.6}%)`;
-
-            // Adjust text color dynamically
+    
+            // Background color transition with easing
+            if (darkModeIntensity > 0) {
+                document.body.style.backgroundColor = `hsl(210, 15%, ${80 - darkModeIntensity * 0.6}%)`;
+                document.body.style.transition = "background-color 0.3s ease";
+            } else {
+                // Reset to default light mode
+                document.body.style.backgroundColor = "#fff";
+                document.body.style.color = "#333";
+                document.body.style.transition = "background-color 0.3s ease, color 0.3s ease";
+            }
+    
+            // Text color transition with easing
             const textColor = darkModeIntensity > 50 ? "#ecf0f1" : "#333";
             document.body.style.color = textColor;
-
+    
+            // Toggle dark mode class
             document.body.classList.toggle("dark", darkModeIntensity > 50);
         });
     </script>
+    
 </body>
 </html>
